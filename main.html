@@ -1,8 +1,33 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <script type="text/javascript" src="./script.js">
-</script>
-  </body>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Manipulation Form</title>
+</head>
+<body>
+    <!-- Form Elements -->
+    <form id="urlForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" required>
+        
+        <button type="button" id="button">Submit</button>
+    </form>
+    
+    <!-- Display URL -->
+    <h3 id="url">https://localhost:8080/</h3>
+    
+    <!-- JavaScript to Manipulate URL -->
+    <script>
+        document.getElementById('button').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const year = document.getElementById('year').value;
+            const url = `https://localhost:8080/?name=${encodeURIComponent(name)}&year=${encodeURIComponent(year)}`;
+            document.getElementById('url').textContent = url;
+        });
+    </script>
+</body>
 </html>
